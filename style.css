@@ -104,7 +104,11 @@ a p {
 .attribution {
     position: absolute;
     bottom: 2rem;
-    font-size: 2rem;
+    font-size: 1.2rem;
+}
+
+.attribution span {
+    font-size: 1.8rem;
 }
 
 hr {

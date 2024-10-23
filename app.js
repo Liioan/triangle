@@ -7,6 +7,7 @@ const jumpAmountSpan = document.querySelector('#jump-amount');
 const currSpeedSpan = document.querySelector('#curr-speed');
 
 const jumpsMadeSpan = document.querySelector('#jumps-made');
+const timeSpentSpan = document.querySelector('#time-spent');
 
 /**
  * @type {HTMLCanvasElement}
@@ -46,23 +47,19 @@ const drawTriangle = () => {
     return corners;
 };
 
-let jumps = 10_000;
-let speed = 1000;
+let jumps = jumpInput.value;
+let speed = speedInput.value;
 
-let currentPosition = {
-    x: Math.floor(Math.random() * 800),
-    y: Math.floor(Math.random() * 800),
-};
-
-ctx.fillStyle = '#f00';
-ctx.fillRect(currentPosition.x, currentPosition.y, 4, 4);
+let currentPosition;
 
 const corners = drawTriangle();
 
 let interval;
+let timer;
 
 const drawJumps = () => {
     let i = 0;
+    let seconds = 0;
     interval = setInterval(() => {
         i++;
         if (i == jumps) {
@@ -76,13 +73,24 @@ const drawJumps = () => {
 
         jumpsMadeSpan.textContent = `skoki: ${i}`;
     }, 1000 / speed);
+
+    timer = setInterval(() => {
+        seconds++;
+        if (i == jumps) {
+            clearInterval(timer);
+        }
+        console.log(seconds, i);
+        timeSpentSpan.textContent = `czas: ${seconds}s`;
+    }, [1000]);
 };
 
 const clearCanvas = () => {
     jumpsMadeSpan.textContent = 'skoki: 0';
+    timeSpentSpan.textContent = 'czas: 0s';
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clearInterval(interval);
+    clearInterval(timer);
     drawTriangle();
 };
 
@@ -102,5 +110,14 @@ clearBtn.addEventListener('click', () => {
 
 commitBtn.addEventListener('click', () => {
     clearCanvas();
+
+    currentPosition = {
+        x: Math.floor(Math.random() * 800),
+        y: Math.floor(Math.random() * 800),
+    };
+
+    ctx.fillStyle = '#f00';
+    ctx.fillRect(currentPosition.x, currentPosition.y, 4, 4);
+
     drawJumps();
 });
