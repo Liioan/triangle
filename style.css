@@ -28,6 +28,7 @@ main {
 }
 
 .controls {
+    position: relative;
     height: 90%;
     min-width: 40rem;
     width: 40%;
@@ -81,4 +82,21 @@ button {
 canvas {
     min-width: 800px;
     min-height: 800px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+a p {
+    text-decoration: underline;
+}
+
+.attribution {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 2rem;
 }

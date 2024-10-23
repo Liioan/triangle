@@ -25,7 +25,6 @@ const drawTriangle = () => {
     const x3 = x1 + sideLength / 2;
     const y3 = y2;
 
-    // Rysowanie trójkąta
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
@@ -54,11 +53,10 @@ let currentPosition = {
 };
 
 ctx.fillStyle = '#f00';
-ctx.fillRect(currentPosition.x, currentPosition.y, 2, 2);
+ctx.fillRect(currentPosition.x, currentPosition.y, 4, 4);
 
 const corners = drawTriangle();
 
-let stop = false;
 let interval;
 
 const drawJumps = () => {
@@ -94,7 +92,6 @@ clearBtn.addEventListener('click', () => {
 });
 
 commitBtn.addEventListener('click', () => {
-    clearInterval(interval);
     clearCanvas();
     drawJumps();
 });
