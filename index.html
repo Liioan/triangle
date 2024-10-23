@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <main>
+            <div class="controls">
+                <form>
+                    <label>
+                        <span>Ilość skoków: </span>
+                        <input
+                            type="range"
+                            value="10000"
+                            max="100000"
+                            min="1"
+                            id="jump-number"
+                        />
+                        <span id="jump-amount">10 000</span>
+                    </label>
+                    <label>
+                        <span>Prędkość: </span>
+                        <input
+                            type="range"
+                            value="1000"
+                            max="1000"
+                            min="1"
+                            id="speed"
+                        />
+                        <span id="curr-speed"> 1000/s </span>
+                    </label>
+                </form>
+                <div class="buttons">
+                    <button id="start">wykonaj</button>
+                    <button id="clear">wyczyść</button>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="triangle" width="800" height="800"></canvas>
+            </div>
+        </main>
+        <script src="./app.js"></script>
+    </body>
+</html>
