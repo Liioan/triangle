@@ -60,9 +60,12 @@ const corners = drawTriangle();
 let interval;
 
 const drawJumps = () => {
-    let i;
+    let i = 0;
     interval = setInterval(() => {
         i++;
+        if (i == jumps) {
+            clearInterval(interval);
+        }
         const selectedCorner = corners[Math.floor(Math.random() * 3)];
         currentPosition.x = (currentPosition.x + selectedCorner.x) / 2;
         currentPosition.y = (currentPosition.y + selectedCorner.y) / 2;
