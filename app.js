@@ -3,8 +3,10 @@ const clearBtn = document.querySelector('#clear');
 
 const jumpInput = document.querySelector('#jump-number');
 const speedInput = document.querySelector('#speed');
-const jumpAmountLabel = document.querySelector('#jump-amount');
-const currSpeedLabel = document.querySelector('#curr-speed');
+const jumpAmountSpan = document.querySelector('#jump-amount');
+const currSpeedSpan = document.querySelector('#curr-speed');
+
+const jumpsMadeSpan = document.querySelector('#jumps-made');
 
 /**
  * @type {HTMLCanvasElement}
@@ -71,10 +73,14 @@ const drawJumps = () => {
         currentPosition.y = (currentPosition.y + selectedCorner.y) / 2;
         ctx.fillStyle = '#fff';
         ctx.fillRect(currentPosition.x, currentPosition.y, 2, 2);
+
+        jumpsMadeSpan.textContent = `skoki: ${i}`;
     }, 1000 / speed);
 };
 
 const clearCanvas = () => {
+    jumpsMadeSpan.textContent = 'skoki: 0';
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clearInterval(interval);
     drawTriangle();
@@ -82,12 +88,12 @@ const clearCanvas = () => {
 
 jumpInput.addEventListener('input', e => {
     jumps = e.target.value;
-    jumpAmountLabel.textContent = jumps;
+    jumpAmountSpan.textContent = jumps;
 });
 
 speedInput.addEventListener('input', e => {
     speed = e.target.value;
-    currSpeedLabel.textContent = `${speed}/s`;
+    currSpeedSpan.textContent = `${speed}/s`;
 });
 
 clearBtn.addEventListener('click', () => {
